@@ -1,14 +1,25 @@
 #ifndef NETWORKING_H
 #define NETWORKING_H
 
-#include <stdio.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <string.h>
-#include <malloc.h> 
+// --- LÓGICA DE COMPILAÇÃO CRUZADA (Windows vs. Linux) ---
 
-// --- Declarações de Funções Comuns ---
+#ifdef _WIN32
+    // Se estiver a compilar para Windows (usando MinGW)
+    #include <winsock2.h>
+    #include <ws2tcpip.h>
+    #include <windows.h>
+    // #pragma comment(lib, "ws2_32.lib") // REMOVIDO: Linha desnecessária para MinGW que gera aviso.
+    #define close closesocket
+#else
+    // Se estiver a compilar para Linux (usando GCC)
+    #include <sys/socket.h>
+    #include <netinet/in.h>
+    #include <arpa/inet.h>
+    #include <unistd.h>
+#endif
+
+// --- Fim da Lógica Condicional ---
+
 
 /**
  * Cria o File Descriptor do socket (AF_INET, SOCK_STREAM).

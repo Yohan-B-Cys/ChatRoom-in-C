@@ -2,8 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h> // Para malloc, free
 #include <string.h> // Para memset, strcmp
-#include <arpa/inet.h>
-#include <unistd.h>
+
 
 /**
  * Cria o File Descriptor do socket (AF_INET, SOCK_STREAM).
