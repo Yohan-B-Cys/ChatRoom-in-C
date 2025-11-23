@@ -9,7 +9,7 @@ O projeto é dividido em três módulos principais:
 
 | Ficheiro | Tipo | Função |
 | :--- | :--- | :--- |
-| `networking.h` / `networking.c` | **Biblioteca** | Lógica de infraestrutura. Contém funções essenciais como `createTCPIpv4Socket` e `createIpv4Address` (com suporte a `INADDR_ANY`). |
+| `networking.h` / `networking.c` | **Biblioteca** | Lógica de infraestrutura. Contém funções essenciais como `createTCPIpv4Socket` e `createIpv4Address` (com suporte a `INADDR_ANY`) e bibliotecas que permitem a compilação de executavel .exe para windows. |
 | `server.c` | **Servidor** | Ouve na porta `6969`. Usa threads para lidar com cada cliente (o assistente) e faz o broadcast de mensagens para todos os participantes, exceto o remetente. |
 | `client.c` | **Cliente** | Conecta-se ao servidor. Usa **duas threads** (`send_messages` e `receive_messages`) para permitir que o utilizador digite e receba mensagens ao mesmo tempo, garantindo que a própria mensagem seja exibida instantaneamente. |
 
@@ -17,7 +17,7 @@ O projeto é dividido em três módulos principais:
 
 O projeto requer o compilador GCC e a biblioteca `ptreads` (para threads).
 
-## Compilação. 
+## Compilação no Linux. 
 
 Execute os seguintes comandos no terminal. É crucial listar todos os ficheiros de implementação (.c) e usar a flag -pthread para o multithreading:
 
@@ -41,6 +41,10 @@ Depois de compilar tanto o servidor como o cliente para rodar aplicação digite
 ```
 
 note que para a conexão funcionar ambos o cliente e servidor tem de estar na mesma porta.
+
+## Compatibilidade Windows 
+
+para executar o programa em ambiente windows basta executar o client.exe e server.exe no terminal powershell
    
 ## Como Rodar Online (Port Forwarding)
 
@@ -50,7 +54,7 @@ Para que haja uma conexão online , é necessário configurar o roteador:
 
 IP Interno Estático: Certifique-se de que o IP local do seu PC (`consultavel pelo comando "ipconfig" `) é estático (recomendado usar Reserva DHCP no roteador) para evitar que a regra de encaminhamento quebre.
 
-Porta: A porta utilizada é a 6969 no protocolo TCP também pode ser utilizado qualquer porta valida de sua preferencia (qualquer porta no intervalo 1024 - 65.535 alterando no linha `#define PORT` )
+Porta: A porta utilizada é a 6969 no protocolo TCP também pode ser utilizado qualquer porta valida de sua preferencia (qualquer porta no intervalo 1024 - 65.535 alterando na linha `#define PORT` )
 
 2. Configuração do Roteador
 
