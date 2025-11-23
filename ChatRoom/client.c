@@ -9,8 +9,8 @@
 
 #define BUFFER_SIZE 2048
 // --- IP E PORTA DEFINIDOS PELO USUÁRIO ---
-#define SERVER_IP "201.89.81.189" 
-#define PORT 6969
+#define SERVER_IP "127.0.0.0"  //defini o server ip para localHost para testes locais.para implementação online consultar README.  
+#define PORT 6969 // escolhi esse valor arbitrariamente NICE :) 
 // ---------------------------------------------
 
 int client_sock_fd = 0; 
