@@ -27,8 +27,7 @@ void *receive_messages(void *arg) {
 
         if (read_size > 0) {
             buffer[read_size] = '\0';
-            
-            // --- CORREÇÃO DE IMPRESSÃO MAIS SEGURA ---
+        
             // 1. Volta para o início da linha e limpa até o fim (escondendo a entrada atual)
             printf("\r\033[K%s\n", buffer); 
             
@@ -46,7 +45,6 @@ void *receive_messages(void *arg) {
         memset(buffer, 0, BUFFER_SIZE);
     }
     pthread_exit(NULL);
-    // Adiciona o return NULL para satisfazer o GCC e remover o aviso
     return NULL;
 }
 
@@ -102,7 +100,7 @@ void *send_messages(void *arg) {
 
 int main (){
     
-    // --- NOVO: INICIALIZAÇÃO OBRIGATÓRIA DO WINSOCK PARA WINDOWS ---
+    //  INICIALIZAÇÃO OBRIGATÓRIA DO WINSOCK PARA WINDOWS ---
     #ifdef _WIN32
         WSADATA wsa_data;
         if (WSAStartup(MAKEWORD(2, 2), &wsa_data) != 0) {
