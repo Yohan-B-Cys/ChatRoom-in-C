@@ -44,7 +44,7 @@ note que para a conexão funcionar ambos o cliente e servidor tem de estar na me
 
 ## Compatibilidade Windows 
 
-para executar o programa em ambiente windows basta executar o client.exe e server.exe no terminal powershell
+para executar o programa em ambiente windows basta executar o client.exe e server.exe no terminal powershell como administrador.
    
 ## Como Rodar Online (Port Forwarding)
 
